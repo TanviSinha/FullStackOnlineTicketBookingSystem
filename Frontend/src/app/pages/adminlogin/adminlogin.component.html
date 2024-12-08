@@ -1,0 +1,38 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
+      <h2 class="text-2xl font-bold text-center text-gray-800">Admin Login</h2>
+  
+      <form (ngSubmit)="onLogin()" class="space-y-6">
+        <!-- Email Input -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" [(ngModel)]="email" name="adminEmail" required
+            class="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-800" />
+        </div>
+  
+        <!-- Password Input -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" [(ngModel)]="password" name="adminPassword" required
+            class="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-800" />
+        </div>
+  
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="text-sm text-red-600 text-center">
+          {{ errorMessage }}
+        </div>
+  
+        <!-- Login Button -->
+        <div>
+          <button type="submit" class="w-full py-2 px-4 text-white bg-blue-600 rounded hover:bg-blue-700">
+            Login
+          </button>
+        </div>
+      </form>
+  
+      <p class="text-sm text-center text-gray-500">
+        Not an admin? <a href="/register" class="text-blue-600 hover:underline">Register</a>
+      </p>
+    </div>
+  </div>
+  

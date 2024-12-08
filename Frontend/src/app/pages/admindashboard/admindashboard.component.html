@@ -1,0 +1,39 @@
+<div class="min-h-screen bg-gray-100">
+  <!-- Welcome Section -->
+  <header class="bg-blue-600 text-white p-6 text-center">
+    <h1 class="text-4xl font-semibold">Welcome to Admin Dashboard</h1>
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="flex justify-center items-start p-6">
+    <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
+      <!-- Navigation Section -->
+      <nav class="mb-6 space-y-4">
+        <h2 class="text-2xl font-semibold text-gray-800">Admin Options</h2>
+        <div class="space-y-2">
+          <a
+            [routerLink]="['/admindashboard/movie-management']"
+            class="block py-2 px-4 rounded-md text-lg bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300"
+            >Movie Management</a>
+          <a
+            [routerLink]="['/admindashboard/cinema-management']"
+            class="block py-2 px-4 rounded-md text-lg bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300"
+            >Cinema Management</a>
+          <a
+            [routerLink]="['/admindashboard/feedback-management']"
+            class="block py-2 px-4 rounded-md text-lg bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300"
+            >Feedback Management</a>
+
+          <!-- Logout Link -->
+          <a
+            (click)="logout()"
+            class="block py-2 px-4 rounded-md text-lg bg-red-500 text-white hover:bg-red-600 transition duration-300 cursor-pointer"
+            >Logout</a>
+        </div>
+      </nav>
+
+      <!-- Dynamic Content -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

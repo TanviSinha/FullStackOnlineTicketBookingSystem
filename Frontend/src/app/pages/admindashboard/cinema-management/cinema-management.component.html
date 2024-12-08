@@ -1,0 +1,87 @@
+<div class="cinema-management p-4">
+    <h1 class="text-xl font-bold mb-4">Cinema Management</h1>
+  
+    <!-- Fetch Cinema Halls Section -->
+    <div class="fetch-section mb-6">
+      <label for="movieId" class="font-medium">Movie ID:</label>
+      <input
+        id="movieId"
+        [(ngModel)]="movieId"
+        name="movieId"
+        type="text"
+        placeholder="Enter Movie ID"
+        class="border p-2 rounded"
+      />
+      <button (click)="fetchCinemaHalls()" class="bg-blue-500 text-white px-4 py-2 rounded ml-2">
+        Fetch Cinema Halls
+      </button>
+      <p *ngIf="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</p>
+    </div>
+  
+    <!-- Display Cinema Halls -->
+    <div *ngIf="cinemaHalls.length > 0" class="cinema-list mb-6">
+      <h2 class="text-lg font-semibold mb-2">Cinema Halls:</h2>
+      <ul>
+        <li *ngFor="let cinema of cinemaHalls" class="border p-2 rounded mb-2">
+          <strong>{{ cinema.name }}</strong> - {{ cinema.location }}
+          <br />
+          <span class="text-sm text-gray-500">Time Slots: {{ cinema.timeSlots.join(', ') }}</span>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Add Cinema Hall Section -->
+    <div class="add-cinema-hall mb-6">
+      <h2 class="text-lg font-semibold mb-2">Add Cinema Hall</h2>
+      <form (submit)="addCinemaHall()" class="space-y-4">
+        <div>
+          <label for="cinemaName" class="font-medium">Cinema Name:</label>
+          <input
+            id="cinemaName"
+            [(ngModel)]="newCinemaHall.name"
+            name="cinemaName"
+            type="text"
+            placeholder="Enter Cinema Name"
+            required
+            class="border p-2 rounded w-full"
+          />
+        </div>
+        <div>
+          <label for="location" class="font-medium">Location:</label>
+          <input
+            id="location"
+            [(ngModel)]="newCinemaHall.location"
+            name="location"
+            type="text"
+            placeholder="Enter Location"
+            required
+            class="border p-2 rounded w-full"
+          />
+        </div>
+        <div>
+          <label for="timeSlots" class="font-medium">Time Slots:</label>
+          <div class="flex gap-2 items-center">
+            <input
+              id="timeSlots"
+              [(ngModel)]="newTimeSlot"
+              name="timeSlot"
+              type="text"
+              placeholder="Add Time Slot"
+              class="border p-2 rounded w-full"
+            />
+            <button type="button" (click)="addTimeSlot()" class="bg-green-500 text-white px-4 py-2 rounded">
+              Add
+            </button>
+          </div>
+          <ul class="time-slots mt-2">
+            <li *ngFor="let slot of newCinemaHall.timeSlots" class="inline-block border p-1 rounded m-1">
+              {{ slot }}
+              <button type="button" (click)="removeTimeSlot(slot)" class="text-red-500 ml-2">&times;</button>
+            </li>
+          </ul>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Cinema Hall</button>
+      </form>
+    </div>
+  </div>
+  

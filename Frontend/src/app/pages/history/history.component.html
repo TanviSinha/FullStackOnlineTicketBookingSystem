@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="p-6 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-gray-800">User History</h2>
+    </div>
+    <div class="p-6 space-y-4">
+      <div *ngIf="history.length > 0; else noHistory">
+        <div
+          *ngFor="let record of history"
+          class="bg-gray-100 rounded-lg p-4 shadow hover:shadow-lg transition"
+        >
+          <p class="text-lg font-medium text-gray-700">
+            <span class="font-bold">Movie Name:</span> {{ record.movieName }}
+          </p>
+          <p class="text-gray-600">
+            <span class="font-bold">Watched On:</span> {{ record.watchedOn }}
+          </p>
+        </div>
+      </div>
+      <ng-template #noHistory>
+        <div class="text-center">
+          <p class="text-gray-500 text-lg">No history found for this user.</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="min-h-screen bg-gray-100 p-6">
+    <!-- Manage Movies Heading -->
+    <h2 class="text-3xl font-semibold text-center mb-8">Manage Movies</h2>
+  
+    <!-- Movie Management Form -->
+    <form [formGroup]="movieForm" (ngSubmit)="isEditMode ? updateMovie() : addMovie()" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <div class="space-y-4">
+        <!-- Movie Name Input -->
+        <input 
+        formControlName="id" 
+        placeholder="Id" 
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input 
+          formControlName="name" 
+          placeholder="Movie Name" 
+          class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  
+        <!-- Genre Input -->
+        <input 
+          formControlName="genre" 
+          placeholder="Genre" 
+          class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  
+        <!-- Ratings Input -->
+        <input 
+          formControlName="ratings" 
+          placeholder="Ratings" 
+          class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  
+        <!-- Votes Input -->
+        <input 
+          formControlName="votes" 
+          placeholder="Votes" 
+          class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  
+        <!-- Image URL Input -->
+        <input 
+          formControlName="image" 
+          placeholder="Image URL" 
+          class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="w-full py-3 mt-4 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none">
+          {{ isEditMode ? 'Update' : 'Add' }}
+        </button>
+      </div>
+    </form>
+  
+    <!-- Existing Movies Section -->
+    <div *ngIf="movies.length" class="mt-12">
+      <h3 class="text-2xl font-semibold mb-4">Existing Movies</h3>
+      <div class="space-y-4">
+        <div *ngFor="let movie of movies" class="flex justify-between items-center p-4 bg-white rounded-lg shadow-md">
+          <h4 class="text-xl font-semibold">{{ movie.name }}</h4>
+          <div class="space-x-4">
+            <!-- Edit Button -->
+            <button 
+              (click)="editMovie(movie)" 
+              class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">
+              Edit
+            </button>
+            
+            <!-- Delete Button -->
+            <button 
+              (click)="deleteMovie(movie.id)" 
+              class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
